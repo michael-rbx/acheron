@@ -84,6 +84,12 @@ function library.init()
 end
 
 function library.unload()
+    table.clear(registry)
+    table.clear(queue)
+
+    queue_head = 1
+    queue_tail = 0
+
     if not connection then return end
 
     connection:Disconnect()
