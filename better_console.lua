@@ -35,51 +35,53 @@ local function pop_queue()
 end
 
 function library.init()
-    if connection then return end
-    if not core_gui then return end
+    task.spawn(function()
+        if connection then return end
+        if not core_gui then return end
 
-    local console = core_gui:WaitForChild("DevConsoleMaster")
-    if not console then return end
+        local console = core_gui:WaitForChild("DevConsoleMaster")
+        if not console then return end
 
-    connection = console.DescendantAdded:Connect(function(desc)
-        if not desc:IsA("Frame") then return end
-        if desc.Parent.Name ~= "ClientLog" then return end
-        if not tonumber(desc.Name) then return end
+        connection = console.DescendantAdded:Connect(function(desc)
+            if not desc:IsA("Frame") then return end
+            if desc.Parent.Name ~= "ClientLog" then return end
+            if not tonumber(desc.Name) then return end
 
-        local msg = desc:WaitForChild("msg")
-        local img = desc:WaitForChild("image")
+            local msg = desc:WaitForChild("msg")
+            local img = desc:WaitForChild("image")
 
-        if not msg.Text:match("customprint9324587") then return end
+            if not msg.Text:match("customprint9324587") then return end
 
-        local data = registry[desc.Name]
-        if not data then
-            data = pop_queue()
-            if not data then return end
+            local data = registry[desc.Name]
+            if not data then
+                data = pop_queue()
+                if not data then return end
 
-            registry[desc.Name] = table.clone(data)
-        end
-
-        if data.no_timestamp then
-            msg.Text = data.text
-        else
-            msg.Text = msg.Text:gsub("customprint9324587", data.text)
-        end
-
-        if data.prefix then
-            msg.Text = string.format("%s %s", data.prefix, msg.Text)
-        end
-
-        if data.color then
-            msg.TextColor3 = data.color
-        end
-
-        if data.icon then
-            img.Image = data.icon
-
-            if data.icon_color then
-                img.ImageColor3 = data.icon_color
+                registry[desc.Name] = table.clone(data)
             end
-        end
+
+            if data.no_timestamp then
+                msg.Text = data.text
+            else
+                msg.Text = msg.Text:gsub("customprint9324587", data.text)
+            end
+
+            if data.prefix then
+                msg.Text = string.format("%s %s", data.prefix, msg.Text)
+            end
+
+            if data.color then
+                msg.TextColor3 = data.color
+            end
+
+            if data.icon then
+                img.Image = data.icon
+
+                if data.icon_color then
+                    img.ImageColor3 = data.icon_color
+                end
+            end
+        end)
     end)
 end
 
