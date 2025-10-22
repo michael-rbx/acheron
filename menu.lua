@@ -1540,6 +1540,7 @@ do
         Position = UDim2.fromOffset(0, -8 * Library.DPIScale + 7),
         Text = "",
         TextSize = 15,
+        RichText = true,
         TextXAlignment = Enum.TextXAlignment.Left,
         Parent = Holder,
     })
