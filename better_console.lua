@@ -39,8 +39,12 @@ function library.init()
         if connection then return end
         if not core_gui then return end
 
-        local console = core_gui:WaitForChild("DevConsoleMaster")
-        if not console then return end
+        local console = nil
+        repeat
+            console = core_gui:FindFirstChild("DevConsoleMaster")
+            print("trying again")
+            task.wait()
+        until console
 
         connection = console.DescendantAdded:Connect(function(desc)
             if not desc:IsA("Frame") then return end
