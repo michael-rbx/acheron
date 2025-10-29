@@ -15,7 +15,8 @@ return function(Iris: Types.Internal)
         DOWN_POINTING_TRIANGLE = "rbxasset://textures/DeveloperFramework/button_arrow_down.png",
         MULTIPLICATION_SIGN = "rbxasset://textures/AnimationEditor/icon_close.png", -- best approximation for a close X which roblox supports, needs to be scaled about 2x
         BOTTOM_RIGHT_CORNER = "rbxasset://textures/ui/InspectMenu/gr-item-selector-triangle.png", -- used in window resize icon in bottom right
-        CHECK_MARK = "rbxasset://textures/AnimationEditor/icon_checkmark.png",
+        --CHECK_MARK = "rbxasset://textures/AnimationEditor/icon_checkmark.png",
+        CHECK_MARK = "rbxassetid://11242915840",
         BORDER = "rbxasset://textures/ui/InspectMenu/gr-item-selector.png",
         ALPHA_BACKGROUND_TEXTURE = "rbxasset://textures/meshPartFallback.png", -- used for color4 alpha
         UNKNOWN_TEXTURE = "rbxasset://textures/ui/GuiImagePlaceholder.png",
