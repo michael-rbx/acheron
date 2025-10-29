@@ -690,9 +690,7 @@ end
 ]=]
 Iris.ShowDemoWindow = loadstring(game:HttpGet("https://raw.githubusercontent.com/michael-rbx/acheron/refs/heads/main/debug_ui/demoWindow.lua"))()(Iris)
 
-
---require(script.widgets)(Internal) -- what?
---require(script.API)(Iris) -- what pt2?
+loadstring(game:HttpGet("https://raw.githubusercontent.com/michael-rbx/acheron/refs/heads/main/debug_ui/widgets/init.lua"))()(Internal)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/michael-rbx/acheron/refs/heads/main/debug_ui/API.lua"))()(Iris)
 
 return Iris
