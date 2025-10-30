@@ -11,12 +11,15 @@ return function(Iris: Types.Internal)
 
     widgets.ICONS = {
         BLANK_SQUARE = "rbxasset://textures/SurfacesDefault.png",
-        RIGHT_POINTING_TRIANGLE = "rbxasset://textures/DeveloperFramework/button_arrow_right.png",
-        DOWN_POINTING_TRIANGLE = "rbxasset://textures/DeveloperFramework/button_arrow_down.png",
-        MULTIPLICATION_SIGN = "rbxasset://textures/AnimationEditor/icon_close.png", -- best approximation for a close X which roblox supports, needs to be scaled about 2x
+        --RIGHT_POINTING_TRIANGLE = "rbxasset://textures/DeveloperFramework/button_arrow_right.png",
+        RIGHT_POINTING_TRIANGLE = "rbxassetid://2418686959",
+        --DOWN_POINTING_TRIANGLE = "rbxasset://textures/DeveloperFramework/button_arrow_down.png",
+        DOWN_POINTING_TRIANGLE = "rbxassetid://85763103242199",
+        --MULTIPLICATION_SIGN = "rbxasset://textures/AnimationEditor/icon_close.png", -- best approximation for a close X which roblox supports, needs to be scaled about 2x
+        MULTIPLICATION_SIGN = "rbxassetid://116533143721125",
         BOTTOM_RIGHT_CORNER = "rbxasset://textures/ui/InspectMenu/gr-item-selector-triangle.png", -- used in window resize icon in bottom right
         --CHECK_MARK = "rbxasset://textures/AnimationEditor/icon_checkmark.png",
-        CHECK_MARK = "rbxassetid://11242915840",
+        CHECK_MARK = "rbxassetid://9754130800",
         BORDER = "rbxasset://textures/ui/InspectMenu/gr-item-selector.png",
         ALPHA_BACKGROUND_TEXTURE = "rbxasset://textures/meshPartFallback.png", -- used for color4 alpha
         UNKNOWN_TEXTURE = "rbxasset://textures/ui/GuiImagePlaceholder.png",
