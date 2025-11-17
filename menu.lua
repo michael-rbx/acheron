@@ -1,4 +1,4 @@
-print("gui ver 1.0.5")
+print("gui ver 1.0.6")
 
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
@@ -1561,8 +1561,10 @@ do
         })
     end
 
-    function Library:SetWatermarkVisibility(Visible: boolean)
+    function Library:SetWatermarkVisibility(Visible: boolean, alpha)
         WatermarkBackground.Visible = Visible
+        WatermarkBackground.BackgroundTransparency = alpha
+
         if Visible then
             ResizeWatermark()
         end
