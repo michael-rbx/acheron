@@ -244,11 +244,39 @@ local SaveManager = {} do
         local success, decoded = pcall(httpService.JSONDecode, httpService, readfile(file))
         if not success then return false, "decode error" end
 
+        local first_shit = {}
+        local second_shit = {}
+
         for _, option in pairs(decoded.objects) do
             if not option.type then continue end
             if not self.Parser[option.type] then continue end
 
-            task.spawn(self.Parser[option.type].Load, option.idx, option) -- task.spawn() so the config loading wont get stuck.
+            local index = tonumber(option.idx:match("^%d+"))
+            if index then
+                first_shit[index] = option
+            else
+                table.insert(second_shit, option)
+            end
+
+            --task.spawn(self.Parser[option.type].Load, option.idx, option)
+        end
+
+        -- first stuff :eyes:
+        local keys = {}
+        for k in pairs(first_shit) do
+            table.insert(keys, k)
+        end
+        
+        table.sort(keys)
+
+        for _, k in ipairs(keys) do
+            local option = first_shit[k]
+            task.spawn(self.Parser[option.type].Load, option.idx, option)
+        end
+
+        -- second stuff
+        for _, option in next, second_shit do
+            task.spawn(self.Parser[option.type].Load, option.idx, option)
         end
 
         return true
