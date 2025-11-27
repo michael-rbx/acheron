@@ -1,4 +1,4 @@
-print("config sys 1.0.2")
+print("config sys 1.0.3")
 
 local cloneref = (cloneref or clonereference or function(instance: any) return instance end)
 local httpService = cloneref(game:GetService("HttpService"))
@@ -378,7 +378,10 @@ local SaveManager = {} do
                 return self.Library:Notify("failed to load autoload config: write file error")
             end
 
-            local success, err = self:Load(name)
+            --task.defer(self.Load, self, name)
+
+            --local success, err = self:Load(name)
+            local success, err = task.defer(self.Load, self, name)
             if not success then
                 return self.Library:Notify("failed to load autoload config: " .. err)
             end
@@ -470,7 +473,8 @@ local SaveManager = {} do
         section:AddButton("load config", function()
             local name = self.Library.Options.SaveManager_ConfigList.Value
 
-            local success, err = self:Load(name)
+            --local success, err = self:Load(name)
+            local success, err = task.defer(self.Load, self, name)
             if not success then
                 return self.Library:Notify("failed to load config: " .. err)
             end
