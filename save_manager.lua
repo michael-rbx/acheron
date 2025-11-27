@@ -1,3 +1,5 @@
+print("save 1.0.1")
+
 local cloneref = (cloneref or clonereference or function(instance: any) return instance end)
 local httpService = cloneref(game:GetService("HttpService"))
 local isfolder, isfile, listfiles = isfolder, isfile, listfiles
@@ -253,7 +255,8 @@ local SaveManager = {} do
 
             local index = tonumber(option.idx:match("^%d+"))
             if index then
-                first_shit[index] = option
+                first_shit[index] = first_shit[index] or {}
+                table.insert(first_shit[index], option)
             else
                 table.insert(second_shit, option)
             end
@@ -266,12 +269,12 @@ local SaveManager = {} do
         for k in pairs(first_shit) do
             table.insert(keys, k)
         end
-        
         table.sort(keys)
 
         for _, k in ipairs(keys) do
-            local option = first_shit[k]
-            task.spawn(self.Parser[option.type].Load, option.idx, option)
+            for _, option in ipairs(first_shit[k]) do
+                self.Parser[option.type].Load(option.idx, option)
+            end
         end
 
         -- second stuff
