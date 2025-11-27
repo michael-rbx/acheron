@@ -1,4 +1,4 @@
-print("save 1.0.1")
+print("config sys 1.0.2")
 
 local cloneref = (cloneref or clonereference or function(instance: any) return instance end)
 local httpService = cloneref(game:GetService("HttpService"))
@@ -246,40 +246,29 @@ local SaveManager = {} do
         local success, decoded = pcall(httpService.JSONDecode, httpService, readfile(file))
         if not success then return false, "decode error" end
 
-        local first_shit = {}
-        local second_shit = {}
+        local first_stuff = {}
+        local second_stuff = {}
 
         for _, option in pairs(decoded.objects) do
             if not option.type then continue end
             if not self.Parser[option.type] then continue end
 
-            local index = tonumber(option.idx:match("^%d+"))
+            local index = tonumber(option.idx:sub(1, 1))
             if index then
-                first_shit[index] = first_shit[index] or {}
-                table.insert(first_shit[index], option)
+                table.insert(first_stuff, option)
             else
-                table.insert(second_shit, option)
+                table.insert(second_stuff, option)
             end
 
-            --task.spawn(self.Parser[option.type].Load, option.idx, option)
+            --task.spawn(self.Parser[option.type].Load, option.idx, option) -- task.spawn() so the config loading wont get stuck.
         end
 
-        -- first stuff :eyes:
-        local keys = {}
-        for k in pairs(first_shit) do
-            table.insert(keys, k)
-        end
-        table.sort(keys)
-
-        for _, k in ipairs(keys) do
-            for _, option in ipairs(first_shit[k]) do
-                self.Parser[option.type].Load(option.idx, option)
-            end
+        for _, option in next, first_stuff do
+            self.Parser[option.type].Load(option.idx, option)
         end
 
-        -- second stuff
-        for _, option in next, second_shit do
-            task.spawn(self.Parser[option.type].Load, option.idx, option)
+        for _, option in next, second_stuff do
+            self.Parser[option.type].Load(option.idx, option)
         end
 
         return true
