@@ -1,4 +1,4 @@
-print("gui ver 1.0.8")
+print("gui ver 1.0.9")
 
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
@@ -6060,7 +6060,7 @@ function Library:CreateWindow(WindowInfo)
             return Tab:AddGroupbox({ Side = 1, Name = Name, IconName = IconName, NoColor = NoColor or false })
         end
 
-        function Tab:AddRightGroupbox(Name, IconName)
+        function Tab:AddRightGroupbox(Name, IconName, NoColor)
             return Tab:AddGroupbox({ Side = 2, Name = Name, IconName = IconName, NoColor = NoColor or false })
         end
 
