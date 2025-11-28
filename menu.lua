@@ -1,4 +1,4 @@
-print("gui ver 1.1.0")
+print("gui ver 1.1.1")
 
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
@@ -1514,8 +1514,8 @@ end
 do
     local WatermarkBackground = Library:MakeOutline(ScreenGui, Library.CornerRadius, 10)
     WatermarkBackground.AutomaticSize = Enum.AutomaticSize.Y
-    WatermarkBackground.Position = UDim2.new(0.5, 0, 1, -10)
-    WatermarkBackground.AnchorPoint = Vector2.new(0.5, 0.5)
+    WatermarkBackground.Position = UDim2.new(0.5, 0, 1, -5)
+    WatermarkBackground.AnchorPoint = Vector2.new(0.5, 1)
     WatermarkBackground.Size = UDim2.fromOffset(0, 0)
     WatermarkBackground.Visible = false
 
