@@ -1,4 +1,4 @@
-print("gui ver 1.0.7")
+print("gui ver 1.0.8")
 
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
@@ -5986,6 +5986,8 @@ function Library:CreateWindow(WindowInfo)
 
                 local BoxIcon = Library:GetCustomIcon(Info.IconName)
                 if BoxIcon then
+                    BoxIcon.Custom = Info.NoColor
+
                     New("ImageLabel", {
                         Image = BoxIcon.Url,
                         ImageColor3 = BoxIcon.Custom and "White" or "AccentColor",
@@ -6054,12 +6056,12 @@ function Library:CreateWindow(WindowInfo)
             return Groupbox
         end
 
-        function Tab:AddLeftGroupbox(Name, IconName)
-            return Tab:AddGroupbox({ Side = 1, Name = Name, IconName = IconName })
+        function Tab:AddLeftGroupbox(Name, IconName, NoColor)
+            return Tab:AddGroupbox({ Side = 1, Name = Name, IconName = IconName, NoColor = NoColor or false })
         end
 
         function Tab:AddRightGroupbox(Name, IconName)
-            return Tab:AddGroupbox({ Side = 2, Name = Name, IconName = IconName })
+            return Tab:AddGroupbox({ Side = 2, Name = Name, IconName = IconName, NoColor = NoColor or false })
         end
 
         function Tab:AddTabbox(Info)
