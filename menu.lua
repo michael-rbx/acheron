@@ -1,4 +1,4 @@
-print("gui ver 1.1.2")
+print("gui ver 1.1.3")
 
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
@@ -3998,6 +3998,7 @@ do
             Size = UDim2.new(1, 0, 0, 14),
             Text = Dropdown.Text,
             TextSize = 14,
+            --RichText = true,
             TextXAlignment = Enum.TextXAlignment.Left,
             Visible = not not Info.Text,
             Parent = Holder,
@@ -4013,6 +4014,7 @@ do
             Size = UDim2.new(1, 0, 0, 21),
             Text = "---",
             TextSize = 14,
+            RichText = true,
             TextXAlignment = Enum.TextXAlignment.Left,
             Parent = Holder,
         })
