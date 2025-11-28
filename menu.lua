@@ -1,4 +1,4 @@
-print("gui ver 1.1.3")
+print("gui ver 1.1.4")
 
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
@@ -3998,7 +3998,7 @@ do
             Size = UDim2.new(1, 0, 0, 14),
             Text = Dropdown.Text,
             TextSize = 14,
-            --RichText = true,
+            RichText = true,
             TextXAlignment = Enum.TextXAlignment.Left,
             Visible = not not Info.Text,
             Parent = Holder,
@@ -4126,9 +4126,9 @@ do
                 end
             end
 
-            if #Str > 25 then
-                Str = Str:sub(1, 22) .. "..."
-            end
+            --if #Str > 25 then
+                --Str = Str:sub(1, 22) .. "..."
+            --end
 
             Display.Text = (Str == "" and "---" or Str)
         end
