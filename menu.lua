@@ -1,4 +1,4 @@
-print("gui ver 1.0.6")
+print("gui ver 1.0.7")
 
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
@@ -985,7 +985,7 @@ function Library:GetCustomIcon(IconName: string)
             Url = IconName,
             ImageRectOffset = Vector2.zero,
             ImageRectSize = Vector2.zero,
-            Custom = true
+            Custom = false
         }
     end
 end
